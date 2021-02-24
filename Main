@@ -1,0 +1,48 @@
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Scanner;
+
+public class MainProgram {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+          List<Books> books = new ArrayList<>();
+        while(true){
+            System.out.println("Input the name of the book, empty stops:");
+            String name = scanner.nextLine();
+            if (name.isEmpty()){
+                break;
+            }
+            System.out.println("Input the age recommendation: ");
+            int age = Integer.valueOf(scanner.nextLine());
+            
+            books.add(new Books(name, age));
+            
+            System.out.println(" ");
+            
+        }
+        System.out.println(books.size() + " books in total.\n");
+        
+        
+        
+        //Expand your program so, 
+        //that the books are sorted based on their age recommendations when they are printed.
+        //If two (or more) books share the same age recommendations the order 
+        //between them does not matter.
+        //Collections.sort(books, Comparator.comparingInt(Books::getAge));
+        
+        //Expand your program, so that it sorts the books with the same age
+        //recommendation based on their name alphabetically.
+        Comparator byAgeName = Comparator
+                .comparing(Books::getAge)
+                .thenComparing(Books::getTitle);
+        Collections.sort(books, byAgeName);
+        
+        System.out.println("Books: ");
+        books.forEach(System.out::println);
+    }
+
+}
