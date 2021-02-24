@@ -1,0 +1,25 @@
+/**
+ *
+ * @author willi
+ */
+public class Books {
+    private String title;
+    private int age;
+    
+    public Books(String title, int age){
+        this.title = title;
+        this.age = age;
+        
+    }
+    public String getTitle(){
+        return title;
+        
+    }
+    public Integer getAge(){
+        return age;
+    }
+    @Override
+    public String toString(){
+        return title + " (recommended for " + age + " year-olds or older)";
+    }
+}
